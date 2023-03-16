@@ -2,6 +2,13 @@
 # files
 *.json
 *main*
+*.sh
+*.service
+*.pyc
 
 # folder
+/__pycache__/
 
+# white list
+!token_template.json
+!pixiv-token-refresher-template.service
