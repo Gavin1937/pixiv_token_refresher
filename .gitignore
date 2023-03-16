@@ -5,10 +5,11 @@
 *.sh
 *.service
 *.pyc
+*.db
+*.sqlite
 
 # folder
 /__pycache__/
 
 # white list
-!token_template.json
-!pixiv-token-refresher-template.service
+!*template.*

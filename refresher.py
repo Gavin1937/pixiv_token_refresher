@@ -7,6 +7,7 @@ from pixiv_auth import (
     print_auth_token_response
 )
 import requests
+from time import time
 
 
 class refresher:
@@ -17,6 +18,9 @@ class refresher:
         pass
     
     # api
+    def get_token(self) -> dict:
+        return self.__token
+    
     def do_refresh(self, refresh_token:str=None) -> dict:
         if refresh_token is None:
             refresh_token = self.__token['refresh_token']
@@ -28,7 +32,8 @@ class refresher:
             self.__token = {
                 'access_token': respjson['access_token'],
                 'refresh_token': respjson['refresh_token'],
-                'expires_in': respjson['expires_in']
+                'expires_in': respjson['expires_in'],
+                'refresh_at': self.__get_unixtimestamp(),
             }
         except KeyError:
             print('Failed to refresh pixiv token.')
@@ -75,6 +80,10 @@ class refresher:
             **REQUESTS_KWARGS
         )
         return response
+    
+    def __get_unixtimestamp(self):
+        now = int(time())
+        return now
 
 
 
