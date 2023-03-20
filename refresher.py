@@ -62,7 +62,7 @@ class refresher:
             print(f'Failed to write to token.json. Exception: {err}')
     
     # copy from pixiv_auth.py with a bit modification
-    def __refresh(self, refresh_token) -> dict:
+    def __refresh(self, refresh_token):
         response = requests.post(
             AUTH_TOKEN_URL,
             data={
